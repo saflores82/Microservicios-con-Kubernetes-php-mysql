@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webApp
+  namespace: ns-webApp
+  labels:
+    app: webApp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webApp
+  template:
+    metadata:
+      labels:
+        app: webApp 
+    spec:
+      containers:
+      - name: webApp
+        image: webApp/webApp:latest
+        ports:
+        - containerPort: 80

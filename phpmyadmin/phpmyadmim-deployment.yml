@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phpmyadmin
+  namespace: ns-mysqlphp
+  labels:
+    app: phpmyadmin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: phpmyadmin
+  template:
+    metadata:
+      labels:
+        app: phpmyadmin
+    spec:
+      containers:
+        - name: phpmyadmin
+          image: phpmyadmin/phpmyadmin:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: PMA_HOST
+              value: mysql
+            - name: MYSQL_ROOT_PASSWORD
+              value: example_password
+
