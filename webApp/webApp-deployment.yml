@@ -16,7 +16,18 @@ spec:
     spec:
       containers:
       - name: webapp
-        image: 192.168.49.2:5000/webapp:2.3
+        image: 192.168.49.2:5000/webapp:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
+        env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: example_password
+            - name: MYSQL_DATABASE
+              value: my_database
+            - name: MYSQL_USER
+              value: my_user
+            - name: MYSQL_PASSWORD
+              value: my_password
+            - name: MYSQL_HOST
+              value: mysql
